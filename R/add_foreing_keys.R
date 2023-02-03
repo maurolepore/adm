@@ -1,7 +1,8 @@
 add_foreign_keys <- function(dm) {
-  dm |>
+  out <- dm |>
     add_fk() |>
     warn_if_lacks_fk()
+  out
 }
 
 add_fk <- function(dm) {

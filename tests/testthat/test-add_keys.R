@@ -1,3 +1,8 @@
+test_that("returns visibly", {
+  dm <- dm(x = tibble(x_id = 1, y_id = 1), y = tibble(y_id = 1))
+  expect_visible(add_keys(dm))
+})
+
 test_that("adds the expected primary keys", {
   data_model <- dm(
     x = tibble(x_id = 1, y_id = 2),
