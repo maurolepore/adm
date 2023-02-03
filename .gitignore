@@ -1,0 +1,6 @@
+.Rproj.user
+docs
+.Rhistory
+
+# Mac OS specific
+**/.DS_Store
