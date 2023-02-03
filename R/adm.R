@@ -1,4 +1,4 @@
-#' Create a data model
+#' Create a data model with automatically generated primary and foreign keys
 #'
 #' @param dir A directory with .csv tables.
 #'

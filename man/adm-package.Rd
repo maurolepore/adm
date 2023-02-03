@@ -2,8 +2,9 @@
 % Please edit documentation in R/adm-package.R
 \docType{package}
 \name{adm-package}
-\alias{adm}
 \alias{adm-package}
+\alias{_PACKAGE}
+\alias{testduplicate-package}
 \title{adm: Automatic Data Models}
 \description{
 Create data models, adding primary and foreign keys automatically from the names of tables and key columns.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/adm.R
 \name{adm}
 \alias{adm}
-\title{Create a data model}
+\title{Create a data model with automatically generated primary and foreign keys}
 \usage{
 adm(dir)
 }
@@ -13,7 +13,7 @@ adm(dir)
 A "dm" object.
 }
 \description{
-Create a data model
+Create a data model with automatically generated primary and foreign keys
 }
 \examples{
 library(tibble)
