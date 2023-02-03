@@ -15,11 +15,7 @@
 #' @export
 #'
 #' @examples
-#' dm <- dm(
-#'   x = data.frame(x_id = 1, y_id = 2),
-#'   y = data.frame(y_id = 2)
-#' )
-#'
+#' dm <- dm::dm(x = data.frame(x_id = 1, y_id = 2), y = data.frame(y_id = 2))
 #' add_keys(dm)
 add_keys <- function(dm) {
   dm |>
