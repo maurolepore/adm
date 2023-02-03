@@ -15,8 +15,8 @@
 #' write_csv(tibble(x_id = 1, y_id = 2), path(tmp, "x.csv"))
 #' write_csv(tibble(y_id = 2), path(tmp, "y.csv"))
 #'
-#' data_model(tmp)
-data_model <- function(dir) {
+#' adm(tmp)
+adm <- function(dir) {
   dir |>
     fs::dir_ls() |>
     create_data_model() |>

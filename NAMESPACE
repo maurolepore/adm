@@ -2,9 +2,9 @@
 
 export(":=")
 export(.data)
+export(adm)
 export(as_label)
 export(as_name)
-export(data_model)
 export(enquo)
 export(enquos)
 importFrom(dm,dm)
