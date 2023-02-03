@@ -1,3 +1,17 @@
+test_that("adds the expected primary keys", {
+  data_model <- dm(
+    x = tibble(x_id = 1, y_id = 2),
+    y = tibble(y_id = 2)
+  )
+
+  out <- add_keys(data_model)
+
+  pk <- dm::dm_get_all_pks(out)
+  expect_equal(nrow(pk), length(data_model))
+  expect_equal(pk$table, c("x", "y"))
+  expect_equal(unlist(pk$pk_col), c("x_id", "y_id"))
+})
+
 test_that("handles country_id and main_activity_id", {
   data_model <- dm::dm(
     companies = tibble(
@@ -11,12 +25,11 @@ test_that("handles country_id and main_activity_id", {
     ),
     country = tibble(
       country_id = 1
-    ),
+    )
   )
 
   fk <- data_model |>
-    add_primary_keys() |>
-    add_foreign_keys() |>
+    add_keys() |>
     expect_no_warning()
 
   expect_equal(nrow(dm::dm_get_all_fks(fk)), 2L)
@@ -52,7 +65,6 @@ test_that("adds the expected foreign keys", {
 
 test_that("handles _id columns of missing tables", {
   # The `y` table is missing
-  pk <- dm(x = tibble(x_id = 1, y_id = 1)) |>
-    add_primary_keys()
-  expect_warning(add_foreign_keys(pk), "no foreign key")
+  dm <- dm(x = tibble(x_id = 1, y_id = 1))
+  expect_warning(add_keys(dm), "no foreign key")
 })
