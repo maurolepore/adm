@@ -2,7 +2,7 @@
 
 export(":=")
 export(.data)
-export(adm)
+export(add_keys)
 export(as_label)
 export(as_name)
 export(enquo)
