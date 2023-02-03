@@ -6,9 +6,15 @@
 #' @export
 #'
 #' @examples
-#' tmp <- withr::local_tempdir()
-#' readr::write_csv(tibble(x_id = 1, y_id = 2), path(tmp, "x.csv"))
-#' readr::write_csv(tibble(y_id = 2), path(tmp, "y.csv"))
+#' library(tibble)
+#' library(withr)
+#' library(readr)
+#' library(fs)
+#'
+#' tmp <- local_tempdir()
+#' write_csv(tibble(x_id = 1, y_id = 2), path(tmp, "x.csv"))
+#' write_csv(tibble(y_id = 2), path(tmp, "y.csv"))
+#'
 #' data_model(tmp)
 data_model <- function(dir) {
   dir |>
