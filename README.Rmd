@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# adm
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of adm is to **a**utomate **d**ata **m**odels created with the
+[dm](https://CRAN.R-project.org/package=dm) package. It guesses primary and
+foreign keys assuming the names of the tables and keys follow two rules:
+
+1. For each table, the primary key has the same name as the table with the
+prefix `_id`. For example the table `x` has a primary key named `x_id`.
+
+2. If an `_id` column exists in a table which name is different than the prefix
+of that `_id` column, then that column is a foreign key linking to another
+table. For example, in the table `x_id`, the column `y_id` is a foreign key
+linking to the table `y`.
+
+## Installation
+
+You can install the development version of adm from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("maurolepore/adm")
+```
+
+## Example
+
+```{r example}
+library(adm)
+
+x <- data.frame(x_id = 1, y_id = 2)
+y <- data.frame(y_id = 2)
+dm <- dm::dm(x, y) |> 
+ add_keys()
+
+dm::dm_draw(dm)
+```
+
