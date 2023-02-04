@@ -91,7 +91,7 @@ adm |> flatten_linked_tables()
 ### Without adm
 
 You can do the same directly with the [dm](https://dm.cynkra.com/)
-package, but in complex databases it’s hard work.
+package, but with complex data models it’s hard work.
 
 -   Add primary and foreign keys.
 
