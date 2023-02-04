@@ -16,14 +16,14 @@
 #'   flatten()
 flatten <- function(dm) {
   link_table <- tidyr::crossing(link = names(dm), table = names(dm)) |>
-    filter(link != table) |>
+    filter(.data$link != .data$table) |>
     dplyr::rowwise() |>
-    filter(grepl(table, link)) |>
+    filter(grepl(.data$table, .data$link)) |>
     dplyr::ungroup()
 
   links <- link_table |>
-    dplyr::distinct(link) |>
-    pull()
+    dplyr::distinct(.data$link) |>
+    dplyr::pull()
   flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
 
   out <- purrr::reduce(flat, dplyr::left_join)
