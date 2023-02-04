@@ -6,6 +6,8 @@
 #' @export
 #'
 #' @examples
+#' library(dm)
+#'
 #' dm <- dm(
 #'   a = tibble(a_id = 1, a = 1),
 #'   b = tibble(b_id = 1, b = 1),
@@ -26,10 +28,10 @@
 flatten_tables <- function(dm) {
   link_table <- tidyr::crossing(link = names(dm), table = names(dm)) |>
     filter(link != table) |>
-    filter(str_detect(link, table))
-  link_table
-  links <- link_table |> distinct(link) |> pull()
-  flat <- lapply(links, \(x) dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
+    filter(stringr::str_detect(link, table))
+
+  links <- link_table |> dplyr::distinct(link) |> pull()
+  flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
   purrr::reduce(flat, dplyr::left_join)
 }
 

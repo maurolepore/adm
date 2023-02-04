@@ -13,6 +13,8 @@ flatten_tables(dm)
 Title
 }
 \examples{
+library(dm)
+
 dm <- dm(
   a = tibble(a_id = 1, a = 1),
   b = tibble(b_id = 1, b = 1),
