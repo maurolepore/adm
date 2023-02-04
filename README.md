@@ -42,14 +42,14 @@ devtools::install_github("maurolepore/adm")
 ``` r
 library(dm, warn.conflicts = FALSE)
 library(adm)
-
-adm_example <- adm_demo()
 ```
 
-Consider this data model. It has the “adm” structure but no keys:
+Consider this data model. The table and column names follow the three
+rules above, but the data model has no key yet.
 
 ``` r
-# Removing keys
+adm_example <- adm_demo()
+# Removing keys to show how to add them
 dm <- dm(!!!as.list(adm_example))
 dm
 #> ── Metadata ────────────────────────────────────────────────────────────────────
@@ -59,7 +59,7 @@ dm
 #> Foreign keys: 0
 ```
 
--   `add_keys()` adds the keys.
+-   `adm::add_keys()` adds primary and foreign keys.
 
 ``` r
 adm <- dm |> add_keys()
@@ -70,13 +70,14 @@ adm
 #> Primary keys: 7
 #> Foreign keys: 5
 
-adm |> dm::dm_draw()
+adm |> dm_draw()
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
--   `flatten_linked_tables()` flattens all linked tables in a single
-    one.
+-   `adm::flatten_linked_tables()` flattens linked tables in a single
+    one. Unlinked tables are excluded because there is no way to join
+    them.
 
 ``` r
 adm |> flatten_linked_tables()
@@ -92,7 +93,7 @@ adm |> flatten_linked_tables()
 You can do the same directly with the [dm](https://dm.cynkra.com/)
 package, but in complex databases it’s hard work.
 
--   Add keys.
+-   Add primary and foreign keys.
 
 ``` r
 dm2 <- dm |> 
@@ -120,7 +121,7 @@ dm2 |> dm_draw()
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
--   Flatten.
+-   Flatten linked tables into a single one.
 
 ``` r
 flat1 <- dm2 |> dm_flatten_to_tbl(.start = a_b)
