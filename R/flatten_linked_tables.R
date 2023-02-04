@@ -14,7 +14,7 @@
 #' dm |>
 #'   dm_select_tbl(a, b, a_b) |>
 #'   flatten_linked_tables()
-flatten <- function(dm) {
+flatten_linked_tables <- function(dm) {
   link_table <- tidyr::crossing(link = names(dm), table = names(dm)) |>
     filter(.data$link != .data$table) |>
     dplyr::rowwise() |>
