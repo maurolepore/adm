@@ -24,6 +24,7 @@ flatten <- function(dm) {
   links <- link_table |>
     dplyr::distinct(.data$link) |>
     dplyr::pull()
+  links <- unique(link_table$link)
   flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
 
   out <- purrr::reduce(flat, dplyr::left_join)
