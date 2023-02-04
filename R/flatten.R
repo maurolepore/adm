@@ -27,5 +27,6 @@ flatten <- function(dm) {
 
   # Relocate names as in `dm`
   nms <- unique(unname(unlist(lapply(dm, names))))
-  out[nms]
+  nms2 <- nms[nms %in% names(out)]
+  out[nms2]
 }
