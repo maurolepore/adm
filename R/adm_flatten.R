@@ -21,13 +21,11 @@ flatten <- function(dm) {
     filter(grepl(.data$table, .data$link)) |>
     dplyr::ungroup()
 
-  links <- link_table |>
-    dplyr::distinct(.data$link) |>
-    dplyr::pull()
   links <- unique(link_table$link)
   flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
 
-  out <- purrr::reduce(flat, dplyr::left_join)
+  out <- Reduce(dplyr::left_join,flat)
+  # Relocate names as in `dm`
   nms <- unique(unname(unlist(lapply(dm, names))))
   out[nms]
 }
