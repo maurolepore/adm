@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 The goal of adm is to **a**utomate **d**ata **m**odels created with the
 [dm](https://CRAN.R-project.org/package=dm) package. It guesses primary and
-foreign keys assuming the names of the tables and keys follow two rules:
+foreign keys assuming the names of the tables and keys follow three rules:
 
 1. For each table, the primary key has the same name as the table with the
 prefix `_id`. For example the table `x` has a primary key named `x_id`.
@@ -29,6 +29,9 @@ prefix `_id`. For example the table `x` has a primary key named `x_id`.
 of that `_id` column, then that column is a foreign key linking to another
 table. For example, in the table `x_id`, the column `y_id` is a foreign key
 linking to the table `y`.
+
+3. If a table links two other tables, its name contains the names of those
+tables. For example, the table `x_y` links the tables `x` and `y`.
 
 ## Installation
 
@@ -41,14 +44,43 @@ devtools::install_github("maurolepore/adm")
 
 ## Example
 
-```{r example}
+```{r}
 library(adm)
+library(dm, warn.conflicts = FALSE)
 
-x <- data.frame(x_id = 1, y_id = 2)
-y <- data.frame(y_id = 2)
-dm <- dm::dm(x, y) |>
-  add_keys()
-
-dm::dm_draw(dm)
+example_dataset <- adm::abcd()
 ```
 
+Consider this data model. It has the "adm" structure but no keys:
+
+```{r}
+# Removing keys
+dm <- dm::dm(!!!as.list(example_dataset))
+
+dm
+```
+
+* `adm::add_keys()` adds the keys.
+
+```{r}
+adm <- dm |> adm::add_keys()
+adm
+
+adm |> dm::dm_draw()
+```
+
+* `adm::flatten()` flattens all linked tables in a data model into single table.
+
+```{r}
+adm |> adm::flatten()
+```
+
+The non-automatic method is more complex.
+
+```{r}
+flat1 <- adm |> dm::dm_flatten_to_tbl(.start = a_b)
+flat2 <- adm |> dm::dm_flatten_to_tbl(.start = b_c, .recursive = TRUE)
+dplyr::left_join(flat1, flat2)
+```
+
+For anything else use the [dm](https://dm.cynkra.com/) package directly.
