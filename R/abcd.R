@@ -12,6 +12,7 @@ abcd <- function() {
     b = tibble(b_id = 1, b = 1),
     b_c = tibble(b_c_id = 1, b_id = 1, c_id = 1),
     c = tibble(c_id = 1, c = 1, d_id = 1),
-    d = tibble(d_id = 1, d = 1)
+    d = tibble(d_id = 1, d = 1),
+    e = tibble(e_id = 1, e = 1)
   ) |> add_keys()
 }
