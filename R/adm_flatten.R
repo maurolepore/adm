@@ -9,12 +9,12 @@
 #' library(dm)
 #'
 #' dm <- abcd()
-#' dm |> adm_flatten()
+#' dm |> flatten()
 #'
 #' dm |>
 #'   dm_select_tbl(a, b, a_b) |>
-#'   adm_flatten()
-adm_flatten <- function(dm) {
+#'   flatten()
+flatten <- function(dm) {
   link_table <- tidyr::crossing(link = names(dm), table = names(dm)) |>
     filter(link != table) |>
     dplyr::rowwise() |>
