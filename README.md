@@ -73,11 +73,11 @@ adm |> dm::dm_draw()
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
--   `adm::flatten()` flattens all linked tables in a data model into
+-   `adm::flatten_linked_tables()` flattens all linked tables in a data model into
     single table.
 
 ``` r
-adm |> adm::flatten()
+adm |> adm::flatten_linked_tables()
 #> Joining with `by = join_by(b_id, b)`
 #> # A tibble: 1 × 10
 #>    a_id     a a_b_id  b_id     b b_c_id  c_id     c  d_id     d

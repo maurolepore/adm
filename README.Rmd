@@ -69,10 +69,10 @@ adm
 adm |> dm::dm_draw()
 ```
 
-* `adm::flatten()` flattens all linked tables in a data model into single table.
+* `adm::flatten_linked_tables()` flattens all linked tables in a data model into single table.
 
 ```{r}
-adm |> adm::flatten()
+adm |> adm::flatten_linked_tables()
 ```
 
 The non-automatic method is more complex.

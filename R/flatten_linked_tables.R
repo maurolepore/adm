@@ -9,11 +9,11 @@
 #' library(dm)
 #'
 #' dm <- adm_demo()
-#' dm |> flatten()
+#' dm |> flatten_linked_tables()
 #'
 #' dm |>
 #'   dm_select_tbl(a, b, a_b) |>
-#'   flatten()
+#'   flatten_linked_tables()
 flatten <- function(dm) {
   link_table <- tidyr::crossing(link = names(dm), table = names(dm)) |>
     filter(.data$link != .data$table) |>
