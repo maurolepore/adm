@@ -37,8 +37,8 @@ library(adm)
 
 x <- data.frame(x_id = 1, y_id = 2)
 y <- data.frame(y_id = 2)
-dm <- dm::dm(x, y) |> 
- add_keys()
+dm <- dm::dm(x, y) |>
+  add_keys()
 
 dm::dm_draw(dm)
 ```

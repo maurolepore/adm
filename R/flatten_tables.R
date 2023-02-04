@@ -32,12 +32,12 @@ flatten_tables <- function(dm) {
     filter(grepl(table, link)) |>
     dplyr::ungroup()
 
-  links <- link_table |> dplyr::distinct(link) |> pull()
+  links <- link_table |>
+    dplyr::distinct(link) |>
+    pull()
   flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
 
   out <- purrr::reduce(flat, dplyr::left_join)
   nms <- unique(unname(unlist(lapply(dm, names))))
   out[nms]
 }
-
-
