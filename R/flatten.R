@@ -23,7 +23,7 @@ flatten <- function(dm) {
 
   links <- unique(link_table$link)
   flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
-  out <- Reduce(dplyr::left_join,flat)
+  out <- Reduce(dplyr::left_join, flat)
 
   # Relocate names as in `dm`
   nms <- unique(unname(unlist(lapply(dm, names))))
