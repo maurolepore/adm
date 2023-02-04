@@ -48,7 +48,7 @@ devtools::install_github("maurolepore/adm")
 library(adm)
 library(dm, warn.conflicts = FALSE)
 
-example_dataset <- adm::abcd()
+example_dataset <- adm::adm_demo()
 ```
 
 Consider this data model. It has the "adm" structure but no keys:

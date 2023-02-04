@@ -4,8 +4,8 @@
 #' @export
 #'
 #' @examples
-#' abcd()
-abcd <- function() {
+#' adm_demo()
+adm_demo <- function() {
   dm(
     a = tibble(a_id = 1, a = 1),
     a_b = tibble(a_b_id = 1, a_id = 1, b_id = 1),

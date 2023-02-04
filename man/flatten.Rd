@@ -18,7 +18,7 @@ Flatten a data model
 \examples{
 library(dm)
 
-dm <- abcd()
+dm <- adm_demo()
 dm |> flatten()
 
 dm |>
