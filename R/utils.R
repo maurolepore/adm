@@ -1,3 +1,10 @@
+#' A toy data model
+#'
+#' @return A dm.
+#' @export
+#'
+#' @examples
+#' abcd()
 abcd <- function() {
   dm(
     a = tibble(a_id = 1, a = 1),

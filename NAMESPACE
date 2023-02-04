@@ -2,6 +2,7 @@
 
 export(":=")
 export(.data)
+export(abcd)
 export(add_keys)
 export(as_label)
 export(as_name)
