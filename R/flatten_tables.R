@@ -28,7 +28,9 @@
 flatten_tables <- function(dm) {
   link_table <- tidyr::crossing(link = names(dm), table = names(dm)) |>
     filter(link != table) |>
-    filter(stringr::str_detect(link, table))
+    dplyr::rowwise() |>
+    filter(grepl(table, link)) |>
+    dplyr::ungroup()
 
   links <- link_table |> dplyr::distinct(link) |> pull()
   flat <- lapply(links, \(x) dm::dm_flatten_to_tbl(dm, !!x, .recursive = TRUE))
