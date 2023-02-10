@@ -20,9 +20,6 @@ must follow only two rules:
     linking to another table. For example, in the table `x_id`, the
     column `y_id` is a foreign key linking to the table `y`.
 
-This is hard work up-front but but makes programming much easier so for
-for complex databases it pays off.
-
 ## Installation
 
 You can install the development version of adm from
