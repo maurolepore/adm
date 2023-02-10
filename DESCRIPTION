@@ -14,13 +14,9 @@ Depends:
 Imports: 
     dm,
     dplyr,
-    fs,
     purrr,
-    readr,
     rlang (>= 0.4.11),
-    tibble,
-    tidyr,
-    withr
+    tibble
 Suggests: 
     roxygen2,
     testthat (>= 3.0.0)
