@@ -55,7 +55,7 @@ dm
 -   `adm::add_keys()` adds primary and foreign keys.
 
 ``` r
-adm <- dm |> add_keys()
+adm <- dm%>%add_keys()
 adm
 #> ── Metadata ────────────────────────────────────────────────────────────────────
 #> Tables: `a`, `a_b`, `b`, `b_c`, `c`, … (7 total)
@@ -63,7 +63,7 @@ adm
 #> Primary keys: 7
 #> Foreign keys: 5
 
-adm |> dm_draw()
+adm%>%dm_draw()
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -73,7 +73,7 @@ adm |> dm_draw()
     them.
 
 ``` r
-adm |> flatten_linked_tables()
+adm%>%flatten_linked_tables()
 #> Warning: Unlinked tables: e
 #> Joining with `by = join_by(b_id)`
 #> Joining with `by = join_by(c_id)`
@@ -114,7 +114,7 @@ dm2
 #> Primary keys: 7
 #> Foreign keys: 5
 
-dm2 |> dm_draw()
+dm2%>%dm_draw()
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
@@ -122,8 +122,8 @@ dm2 |> dm_draw()
 -   Flatten linked tables into a single one.
 
 ``` r
-flat1 <- dm2 |> dm_flatten_to_tbl(.start = a_b)
-flat2 <- dm2 |> dm_flatten_to_tbl(.start = b_c, .recursive = TRUE)
+flat1 <- dm2%>%dm_flatten_to_tbl(.start = a_b)
+flat2 <- dm2%>%dm_flatten_to_tbl(.start = b_c, .recursive = TRUE)
 left_join(flat1, flat2)
 #> Joining with `by = join_by(b_id, b)`
 #> # A tibble: 1 × 10

@@ -14,5 +14,5 @@ adm_demo <- function() {
     c = tibble(c_id = 1, c = 1, d_id = 1),
     d = tibble(d_id = 1, d = 1),
     e = tibble(e_id = 1, e = 1)
-  ) |> add_keys()
+  )%>%add_keys()
 }
