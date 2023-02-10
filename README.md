@@ -6,10 +6,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of adm is to **a**utomate **d**ata **m**odels created with the
-[dm](https://CRAN.R-project.org/package=dm) package. It guesses primary
-and foreign keys assuming the names of the tables and keys follow three
-rules:
+The goal of adm is to provide **a**utomated tools to work with **d**ata
+**m**odels. It’s enabled by a lightweight convention on top of the
+[dm](https://CRAN.R-project.org/package=dm) package. Your data model
+must follow only two rules:
 
 1.  For each table, the primary key has the same name as the table with
     the prefix `_id`. For example the table `x` has a primary key named
@@ -19,13 +19,6 @@ rules:
     the prefix of that `_id` column, then that column is a foreign key
     linking to another table. For example, in the table `x_id`, the
     column `y_id` is a foreign key linking to the table `y`.
-
-3.  If a table links two other tables, its name contains the names of
-    those tables. For example, the table `x_y` links the tables `x` and
-    `y`.
-
-This is hard work up-front but but makes programming much easier so for
-for complex databases it pays off.
 
 ## Installation
 
@@ -62,7 +55,7 @@ dm
 -   `adm::add_keys()` adds primary and foreign keys.
 
 ``` r
-adm <- dm |> add_keys()
+adm <- dm %>% add_keys()
 adm
 #> ── Metadata ────────────────────────────────────────────────────────────────────
 #> Tables: `a`, `a_b`, `b`, `b_c`, `c`, … (7 total)
@@ -70,7 +63,7 @@ adm
 #> Primary keys: 7
 #> Foreign keys: 5
 
-adm |> dm_draw()
+adm %>% dm_draw()
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -80,8 +73,13 @@ adm |> dm_draw()
     them.
 
 ``` r
-adm |> flatten_linked_tables()
-#> Joining with `by = join_by(b_id, b)`
+adm %>% flatten_linked_tables()
+#> Warning: Unlinked tables: e
+#> Joining with `by = join_by(b_id)`
+#> Joining with `by = join_by(c_id)`
+#> Joining with `by = join_by(a_id)`
+#> Joining with `by = join_by(b_id)`
+#> Joining with `by = join_by(d_id)`
 #> # A tibble: 1 × 10
 #>    a_id     a a_b_id  b_id     b b_c_id  c_id     c  d_id     d
 #>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
@@ -116,7 +114,7 @@ dm2
 #> Primary keys: 7
 #> Foreign keys: 5
 
-dm2 |> dm_draw()
+dm2 %>% dm_draw()
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
@@ -124,8 +122,8 @@ dm2 |> dm_draw()
 -   Flatten linked tables into a single one.
 
 ``` r
-flat1 <- dm2 |> dm_flatten_to_tbl(.start = a_b)
-flat2 <- dm2 |> dm_flatten_to_tbl(.start = b_c, .recursive = TRUE)
+flat1 <- dm2 %>% dm_flatten_to_tbl(.start = a_b)
+flat2 <- dm2 %>% dm_flatten_to_tbl(.start = b_c, .recursive = TRUE)
 left_join(flat1, flat2)
 #> Joining with `by = join_by(b_id, b)`
 #> # A tibble: 1 × 10
