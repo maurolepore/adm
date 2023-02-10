@@ -81,7 +81,12 @@ adm |> dm_draw()
 
 ``` r
 adm |> flatten_linked_tables()
-#> Joining with `by = join_by(b_id, b)`
+#> Warning: Unlinked tables: e
+#> Joining with `by = join_by(b_id)`
+#> Joining with `by = join_by(c_id)`
+#> Joining with `by = join_by(a_id)`
+#> Joining with `by = join_by(b_id)`
+#> Joining with `by = join_by(d_id)`
 #> # A tibble: 1 × 10
 #>    a_id     a a_b_id  b_id     b b_c_id  c_id     c  d_id     d
 #>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
