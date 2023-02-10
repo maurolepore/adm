@@ -6,10 +6,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of adm is to **a**utomate **d**ata **m**odels created with the
-[dm](https://CRAN.R-project.org/package=dm) package. It guesses primary
-and foreign keys assuming the names of the tables and keys follow three
-rules:
+The goal of adm is to provide **a**utomated tools to work with **d**ata
+**m**odels. It’s enabled by a lightweight convention on top of the
+[dm](https://CRAN.R-project.org/package=dm) package. Your data model
+must follow only two rules:
 
 1.  For each table, the primary key has the same name as the table with
     the prefix `_id`. For example the table `x` has a primary key named
@@ -19,10 +19,6 @@ rules:
     the prefix of that `_id` column, then that column is a foreign key
     linking to another table. For example, in the table `x_id`, the
     column `y_id` is a foreign key linking to the table `y`.
-
-3.  If a table links two other tables, its name contains the names of
-    those tables. For example, the table `x_y` links the tables `x` and
-    `y`.
 
 This is hard work up-front but but makes programming much easier so for
 for complex databases it pays off.
