@@ -6,9 +6,9 @@ dm
 dplyr
 eval
 ggplot
+magrittr
 odels
 rlang
-tbl
 tunnelled
 tunnelling
-utomate
+utomated
