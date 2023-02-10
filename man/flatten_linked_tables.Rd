@@ -4,13 +4,16 @@
 \alias{flatten_linked_tables}
 \title{Flatten a data model}
 \usage{
-flatten_linked_tables(dm)
+flatten_linked_tables(dm, .join = dplyr::left_join)
 }
 \arguments{
-\item{dm}{A dm.}
+\item{dm}{A \code{\link[dm]{dm}} object.}
+
+\item{.join}{The type of join to be performed, see \code{\link[dplyr:mutate-joins]{dplyr::join()}}.}
 }
 \value{
-A tbl.
+A single table that results from consecutively joining all linked
+tables.
 }
 \description{
 Flatten a data model
