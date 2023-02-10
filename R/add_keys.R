@@ -68,9 +68,9 @@ enframe_fk <- function(dm) {
   out <- dm %>%
     as.list() %>%
     map(names) %>%
-    map(\(x) grep("_id$", x, value = TRUE)) %>%
-    imap(\(x, names_x) setdiff(x, paste0(names_x, "_id"))) %>%
-    keep(\(x) length(x) > 0L) %>%
+    map(function(x) grep("_id$", x, value = TRUE)) %>%
+    imap(function(x, names_x) setdiff(x, paste0(names_x, "_id"))) %>%
+    keep(function(x) length(x) > 0L) %>%
     enframe(name = "table", value = "columns")
 
   out %>%
