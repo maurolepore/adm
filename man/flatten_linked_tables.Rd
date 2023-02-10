@@ -22,7 +22,7 @@ Flatten a data model
 library(dm)
 
 dm <- adm_demo()
-dm\%>\%flatten_linked_tables()
+dm \%>\% flatten_linked_tables()
 
 dm |>
   dm_select_tbl(a, b, a_b) |>
