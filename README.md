@@ -94,18 +94,18 @@ package, but with complex data models it’s hard work.
 -   Add primary and foreign keys.
 
 ``` r
-dm2 <- dm |>
-  dm_add_pk(a, a_id) |>
-  dm_add_pk(a_b, a_b_id) |>
-  dm_add_pk(b, b_id) |>
-  dm_add_pk(b_c, b_c_id) |>
-  dm_add_pk(c, c_id) |>
-  dm_add_pk(d, d_id) |>
-  dm_add_pk(e, e_id) |>
-  dm_add_fk(a_b, a_id, a) |>
-  dm_add_fk(a_b, b_id, b) |>
-  dm_add_fk(b_c, b_id, b) |>
-  dm_add_fk(b_c, c_id, c) |>
+dm2 <- dm %>%
+  dm_add_pk(a, a_id) %>%
+  dm_add_pk(a_b, a_b_id) %>%
+  dm_add_pk(b, b_id) %>%
+  dm_add_pk(b_c, b_c_id) %>%
+  dm_add_pk(c, c_id) %>%
+  dm_add_pk(d, d_id) %>%
+  dm_add_pk(e, e_id) %>%
+  dm_add_fk(a_b, a_id, a) %>%
+  dm_add_fk(a_b, b_id, b) %>%
+  dm_add_fk(b_c, b_id, b) %>%
+  dm_add_fk(b_c, c_id, c) %>%
   dm_add_fk(c, d_id, d)
 dm2
 #> ── Metadata ────────────────────────────────────────────────────────────────────
