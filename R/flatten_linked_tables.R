@@ -12,8 +12,8 @@
 #' dm <- adm_demo()
 #' dm %>% flatten_linked_tables()
 #'
-#' dm |>
-#'   dm_select_tbl(a, b, a_b) |>
+#' dm %>%
+#'   dm_select_tbl(a, b, a_b) %>%
 #'   flatten_linked_tables()
 flatten_linked_tables <- function(dm, .join = dplyr::left_join) {
   all_fk <- dm %>% dm::dm_get_all_fks()

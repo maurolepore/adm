@@ -33,8 +33,8 @@ test_that("handles country_id and main_activity_id", {
     )
   )
 
-  fk <- data_model |>
-    add_keys() |>
+  fk <- data_model %>%
+    add_keys() %>%
     expect_no_warning()
 
   expect_equal(nrow(dm::dm_get_all_fks(fk)), 2L)
@@ -49,21 +49,21 @@ test_that("adds the expected foreign keys", {
     # `z` references `x`
     # `z` references `y`
     z = tibble(z_id = 2, x_id = 1, y_id = 2)
-  ) |>
+  ) %>%
     add_primary_keys()
 
   out <- add_foreign_keys(data_model)
 
   fk <- dm::dm_get_all_fks(out)
-  fk |>
-    filter(parent_table == "y") |>
-    pull(child_table) |>
+  fk %>%
+    filter(parent_table == "y") %>%
+    pull(child_table) %>%
     # `x` references `y`
     # `z` references `y`
     expect_equal(c("x", "z"))
-  fk |>
-    filter(parent_table == "x") |>
-    pull(child_table) |>
+  fk %>%
+    filter(parent_table == "x") %>%
+    pull(child_table) %>%
     # `z` references `x`
     expect_equal("z")
 })

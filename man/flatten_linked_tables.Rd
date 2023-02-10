@@ -24,7 +24,7 @@ library(dm)
 dm <- adm_demo()
 dm \%>\% flatten_linked_tables()
 
-dm |>
-  dm_select_tbl(a, b, a_b) |>
+dm \%>\%
+  dm_select_tbl(a, b, a_b) \%>\%
   flatten_linked_tables()
 }

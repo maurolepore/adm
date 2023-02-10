@@ -37,12 +37,12 @@ test_that("flattens linked tables by position in the data model", {
     z = tibble(z_id = 1)
   ))
 
-  out1 <- dm |>
-    dm::dm_flatten_to_tbl(x) |>
+  out1 <- dm %>%
+    dm::dm_flatten_to_tbl(x) %>%
     suppressMessages()
-  out2 <- dm |>
-    flatten_linked_tables() |>
-    suppressMessages() |>
+  out2 <- dm %>%
+    flatten_linked_tables() %>%
+    suppressMessages() %>%
     suppressWarnings()
 
   expect_equal(out1, out2)

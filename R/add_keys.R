@@ -18,8 +18,8 @@
 #' dm <- dm::dm(x = data.frame(x_id = 1, y_id = 2), y = data.frame(y_id = 2))
 #' add_keys(dm)
 add_keys <- function(dm) {
-  dm |>
-    add_primary_keys() |>
+  dm %>%
+    add_primary_keys() %>%
     add_foreign_keys()
 }
 
@@ -36,8 +36,8 @@ add_primary_keys <- function(dm) {
 }
 
 add_foreign_keys <- function(dm) {
-  out <- dm |>
-    add_fk() |>
+  out <- dm %>%
+    add_fk() %>%
     warn_if_lacks_fk()
   out
 }
@@ -65,17 +65,17 @@ warn_if_lacks_fk <- function(dm) {
 }
 
 enframe_fk <- function(dm) {
-  out <- dm |>
-    as.list() |>
-    map(names) |>
-    map(\(x) grep("_id$", x, value = TRUE)) |>
-    imap(\(x, names_x) setdiff(x, paste0(names_x, "_id"))) |>
-    keep(\(x) length(x) > 0L) |>
+  out <- dm %>%
+    as.list() %>%
+    map(names) %>%
+    map(\(x) grep("_id$", x, value = TRUE)) %>%
+    imap(\(x, names_x) setdiff(x, paste0(names_x, "_id"))) %>%
+    keep(\(x) length(x) > 0L) %>%
     enframe(name = "table", value = "columns")
 
-  out |>
-    group_by(table) |>
-    reframe(columns = unlist(.data$columns)) |>
-    mutate(ref_table = gsub("_id$", "", .data$columns)) |>
+  out %>%
+    group_by(table) %>%
+    reframe(columns = unlist(.data$columns)) %>%
+    mutate(ref_table = gsub("_id$", "", .data$columns)) %>%
     filter(.data$ref_table %in% names(dm))
 }
