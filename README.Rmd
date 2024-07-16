@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,6 +17,7 @@ knitr::opts_chunk$set(
 # adm
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/maurolepore/adm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/maurolepore/adm/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of adm is to provide **a**utomated tools to work with **d**ata
