@@ -7,11 +7,14 @@ Authors@R:
 Description: Create data models, adding primary and foreign keys
     automatically from the names of tables and key columns.
 License: MIT + file LICENSE
-URL: https://github.com/maurolepore/adm, https://maurolepore.github.io/adm/
+URL: https://github.com/maurolepore/adm,
+    https://maurolepore.github.io/adm/
 BugReports: https://github.com/maurolepore/adm/issues
 Depends: 
     R (>= 2.10)
 Imports: 
+    DiagrammeR,
+    DiagrammeRsvg,
     dm,
     dplyr,
     magrittr,
