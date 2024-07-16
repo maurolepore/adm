@@ -10,7 +10,7 @@ License: MIT + file LICENSE
 URL: https://github.com/maurolepore/adm
 BugReports: https://github.com/maurolepore/adm/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.3)
 Imports: 
     dm,
     dplyr,
